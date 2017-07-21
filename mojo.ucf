@@ -1,0 +1,107 @@
+#===============================================================================
+# NTSC Shield for Mojo V3 (Spartan-6) board
+#===============================================================================
+
+#===============================================================================
+# VCCAUX pin voltage
+#===============================================================================
+CONFIG VCCAUX = 3.3;
+
+#===============================================================================
+# timing constraint of 50 MHz clock
+#===============================================================================
+NET "clk" TNM_NET = clk;
+TIMESPEC TS_clk = PERIOD "clk" 50 MHz HIGH 50%;
+
+#===============================================================================
+# clock and reset
+#===============================================================================
+NET "clk" LOC = P56 | IOSTANDARD = LVTTL;
+NET "rst_n" LOC = P38 | IOSTANDARD = LVTTL;
+
+#===============================================================================
+# configuration clock
+#===============================================================================
+NET "cclk" LOC = P70 | IOSTANDARD = LVTTL;
+
+#===============================================================================
+# 8 discrete LEDs
+#===============================================================================
+NET "led<0>" LOC = P134 | IOSTANDARD = LVTTL;
+NET "led<1>" LOC = P133 | IOSTANDARD = LVTTL;
+NET "led<2>" LOC = P132 | IOSTANDARD = LVTTL;
+NET "led<3>" LOC = P131 | IOSTANDARD = LVTTL;
+NET "led<4>" LOC = P127 | IOSTANDARD = LVTTL;
+NET "led<5>" LOC = P126 | IOSTANDARD = LVTTL;
+NET "led<6>" LOC = P124 | IOSTANDARD = LVTTL;
+NET "led<7>" LOC = P123 | IOSTANDARD = LVTTL;
+
+#===============================================================================
+# AVR SPI
+#===============================================================================
+NET "spi_mosi" LOC = P44 | IOSTANDARD = LVTTL;
+NET "spi_miso" LOC = P45 | IOSTANDARD = LVTTL;
+NET "spi_ss" LOC = P48 | IOSTANDARD = LVTTL;
+NET "spi_sck" LOC = P43 | IOSTANDARD = LVTTL;
+NET "spi_channel<0>" LOC = P46 | IOSTANDARD = LVTTL;
+NET "spi_channel<1>" LOC = P61 | IOSTANDARD = LVTTL;
+NET "spi_channel<2>" LOC = P62 | IOSTANDARD = LVTTL;
+NET "spi_channel<3>" LOC = P65 | IOSTANDARD = LVTTL;
+
+#===============================================================================
+# AVR serial port
+#===============================================================================
+NET "avr_tx" LOC = P55 | IOSTANDARD = LVTTL;
+NET "avr_rx" LOC = P59 | IOSTANDARD = LVTTL;
+NET "avr_rx_busy" LOC = P39 | IOSTANDARD = LVTTL;
+
+#===============================================================================
+# NTSC
+#===============================================================================
+NET "rgb<0>" LOC = P94 | IOSTANDARD = LVTTL;
+NET "rgb<1>" LOC = P93 | IOSTANDARD = LVTTL;
+NET "rgb<2>" LOC = P92 | IOSTANDARD = LVTTL;
+NET "rgb<3>" LOC = P98 | IOSTANDARD = LVTTL;
+NET "rgb<4>" LOC = P97 | IOSTANDARD = LVTTL;
+NET "rgb<5>" LOC = P95 | IOSTANDARD = LVTTL;
+NET "rgb<6>" LOC = P100 | IOSTANDARD = LVTTL;
+NET "rgb<7>" LOC = P99 | IOSTANDARD = LVTTL;
+
+NET "hsync" LOC = P11 | IOSTANDARD = LVTTL;
+NET "vsync" LOC = P12 | IOSTANDARD = LVTTL;
+
+#===============================================================================
+# SRAM
+#===============================================================================
+NET "we_n" LOC = P82 | IOSTANDARD = LVTTL | SLEW = FAST;
+NET "oe_n" LOC = P29 | IOSTANDARD = LVTTL | SLEW = FAST;
+
+NET "a<0>" LOC = P75 | IOSTANDARD = LVTTL | SLEW = FAST;
+NET "a<1>" LOC = P74 | IOSTANDARD = LVTTL | SLEW = FAST;
+NET "a<2>" LOC = P67 | IOSTANDARD = LVTTL | SLEW = FAST;
+NET "a<3>" LOC = P66 | IOSTANDARD = LVTTL | SLEW = FAST;
+NET "a<4>" LOC = P58 | IOSTANDARD = LVTTL | SLEW = FAST;
+NET "a<5>" LOC = P34 | IOSTANDARD = LVTTL | SLEW = FAST;
+NET "a<6>" LOC = P33 | IOSTANDARD = LVTTL | SLEW = FAST;
+NET "a<7>" LOC = P32 | IOSTANDARD = LVTTL | SLEW = FAST;
+NET "a<8>" LOC = P30 | IOSTANDARD = LVTTL | SLEW = FAST;
+NET "a<9>" LOC = P22 | IOSTANDARD = LVTTL | SLEW = FAST;
+NET "a<10>" LOC = P21 | IOSTANDARD = LVTTL | SLEW = FAST;
+NET "a<11>" LOC = P17 | IOSTANDARD = LVTTL | SLEW = FAST;
+NET "a<12>" LOC = P16 | IOSTANDARD = LVTTL | SLEW = FAST;
+NET "a<13>" LOC = P15 | IOSTANDARD = LVTTL | SLEW = FAST;
+NET "a<14>" LOC = P14 | IOSTANDARD = LVTTL | SLEW = FAST;
+NET "a<15>" LOC = P88 | IOSTANDARD = LVTTL | SLEW = FAST;
+NET "a<16>" LOC = P87 | IOSTANDARD = LVTTL | SLEW = FAST;
+NET "a<17>" LOC = P85 | IOSTANDARD = LVTTL | SLEW = FAST;
+NET "a<18>" LOC = P84 | IOSTANDARD = LVTTL | SLEW = FAST;
+NET "a<19>" LOC = P83 | IOSTANDARD = LVTTL | SLEW = FAST;
+
+NET "dq<0>" LOC = P78 | IOSTANDARD = LVTTL | SLEW = FAST;
+NET "dq<1>" LOC = P79 | IOSTANDARD = LVTTL | SLEW = FAST;
+NET "dq<2>" LOC = P80 | IOSTANDARD = LVTTL | SLEW = FAST;
+NET "dq<3>" LOC = P81 | IOSTANDARD = LVTTL | SLEW = FAST;
+NET "dq<4>" LOC = P23 | IOSTANDARD = LVTTL | SLEW = FAST;
+NET "dq<5>" LOC = P24 | IOSTANDARD = LVTTL | SLEW = FAST;
+NET "dq<6>" LOC = P26 | IOSTANDARD = LVTTL | SLEW = FAST;
+NET "dq<7>" LOC = P27 | IOSTANDARD = LVTTL | SLEW = FAST;
