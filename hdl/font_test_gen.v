@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
-// Author:          Ryan Clarke (adapted from Dr. Pong P. Chu)
+// Author:          Ryan Clarke
 // 
 // Create Date:     06/27/2017
 // Module Name:     font_test_gen
@@ -8,12 +8,9 @@
 //
 // Description:     NTSC Shield Font Test Generator
 //
-//                  Outputs a 64-by-2 character (512-by-32 pixel) pattern of all
-//                  128 characters in the font ROM. Each character is a 8-by-16
+//                  Outputs a 64-by-4 character (512-by-64 pixel) pattern of all
+//                  256 characters in the font ROM. Each character is a 8-by-16
 //                  array of pixels.
-//
-//                  Adapted from the book "FPGA Prototyping by Verilog Examples"
-//                  written by Dr. Pong P. Chu, (c) 2008.
 //
 // Parameters:      COLOR        - font color
 //
@@ -52,8 +49,8 @@ module font_test_gen
 // SIGNAL DECLARATION //////////////////////////////////////////////////////////
 
     // font ROM signals
-    wire [10:0] rom_addr;
-    wire [6:0] char_addr;
+    wire [11:0] rom_addr;
+    wire [7:0] char_addr;
     wire [3:0] row_addr;
     wire [2:0] bit_addr;
 
@@ -79,17 +76,17 @@ module font_test_gen
 // SIGNALS /////////////////////////////////////////////////////////////////////
     
     // font ROM interface                                         
-    assign char_addr = {y[4], x[8:3]};          // 128 characters (64-by-2)
+    assign char_addr = {y[5:4], x[8:3]};        // 256 characters (64-by-4)
     assign row_addr = y[3:0];                   // 16 y-pixels per character
-    assign rom_addr = {char_addr, row_addr};    // 11-bit font ROM address
+    assign rom_addr = {char_addr, row_addr};    // 12-bit font ROM address
     
     assign bit_addr = x[2:0];                   // 8 x-pixels per character
     assign font_bit = font_word[~bit_addr];     // correct endianness between
                                                 // screen coordinate and font
                                                 // word
     
-    // limit text generation to 512-by-32 region    
-    assign text_bit_on = (~x[9] & (~| y[8:5])) ? font_bit : 1'b0;
+    // limit text generation to 512-by-64 region    
+    assign text_bit_on = (~x[9] & (~| y[8:6])) ? font_bit : 1'b0;
     
 // OUTPUT LOGIC ////////////////////////////////////////////////////////////////
     
