@@ -52,7 +52,7 @@ module ntsc_test
         );
     
     // RGB 3-3-2 palette generator (512-by-128)
-    rgb_332_palette #(.START_Y(9'd48)) rgb_332_palette_unit
+    rgb_332_palette #(.START_Y(9'd80)) rgb_332_palette_unit
         (
     	.x(x),
     	.y(y),
@@ -61,7 +61,7 @@ module ntsc_test
         );
     
     // color bars
-    color_bars #(.START_Y(9'd192)) color_bars_unit
+    color_bars #(.START_Y(9'd224)) color_bars_unit
         (
         .x(x),
         .y(y),
